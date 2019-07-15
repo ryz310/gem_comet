@@ -12,5 +12,11 @@ Metrics/BlockLength:
     - 'gem_comet.gemspec'
     - 'spec/**/*'
 
+Metrics/LineLength:
+  Max: 100
+
+RSpec/MultipleExpectations:
+  Max: 4
+
 RSpec/NestedGroups:
   Max: 4
