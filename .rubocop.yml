@@ -1,0 +1,15 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/NestedGroups:
+  Max: 4
