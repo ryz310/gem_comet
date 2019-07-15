@@ -21,6 +21,10 @@ module GemComet
       end
 
       def update_version_file
+        puts '=' * 100
+        puts "version_file_path : #{version_file_path.inspect}"
+        puts "File.read(version_file_path) : #{File.read(version_file_path).inspect}"
+        puts '=' * 100
         pr_comet.commit ':comet: Update version number' do
           version_file = File.read(version_file_path)
           version_file.sub!(
