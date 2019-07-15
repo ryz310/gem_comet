@@ -3,29 +3,36 @@
 module GemComet
   # Creates pull requests for gem release and that preparation
   class Release < ServiceAbstract
-    CONFIG_FILE_PATH = '.gem_comet.yml'
-
     private
 
-    attr_reader :version, :base_branch, :release_branch
+    attr_reader :version, :config
 
     def initialize(version:)
       verify_version_number(version)
 
       @version = version
-      @base_branch = config['base_branch']
-      @release_branch = config['release_branch']
+      @config = Config.call
     end
 
     def call
-      UpdatePR.call(version: version, base_branch: base_branch)
-      ReleasePR.call(version: version, base_branch: base_branch, release_branch: release_branch)
+      UpdatePR.call(update_pr_args)
+      ReleasePR.call(release_pr_args)
     end
 
-    def config
-      @config ||= YAML.safe_load(File.open(CONFIG_FILE_PATH))['release']
-    rescue Errno::ENOENT
-      raise 'Not initialized. Please run `$ gem_comet init`.'
+    def update_pr_args
+      {
+        version: version,
+        base_branch: config.release.base_branch,
+        version_file_path: config.release.version_file_path
+      }
+    end
+
+    def release_pr_args
+      {
+        version: version,
+        base_branch: config.release.base_branch,
+        release_branch: config.release.release_branch
+      }
     end
 
     def verify_version_number(version)

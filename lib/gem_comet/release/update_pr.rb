@@ -6,11 +6,12 @@ module GemComet
     class UpdatePR < ServiceAbstract
       private
 
-      attr_reader :version, :pr_comet
+      attr_reader :version, :pr_comet, :version_file_path
 
-      def initialize(version:, base_branch:)
+      def initialize(version:, base_branch:, version_file_path:)
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
+        @version_file_path = version_file_path
       end
 
       def call
@@ -21,7 +22,7 @@ module GemComet
 
       def update_version_file
         pr_comet.commit ':comet: Update version number' do
-          gsub_file config['version_file_path'],
+          gsub_file version_file_path,
                     /VERSION\s*=\s*(['"])(.+?)(['"])/,
                     "VERSION = \\1#{version}\\3"
         end
