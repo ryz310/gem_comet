@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
+
 # GemComet
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gem_comet`. To experiment with that code, run `bin/console` for an interactive prompt.
