@@ -4,6 +4,8 @@ module GemComet
   class Release
     # Creates a pull request for release preparation
     class UpdatePR < ServiceAbstract
+      include Thor::Actions
+
       private
 
       attr_reader :version, :pr_comet, :version_file_path
