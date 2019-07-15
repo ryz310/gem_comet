@@ -1,4 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
+[![CircleCI](https://circleci.com/gh/ryz310/gem_comet.svg?style=svg)](https://circleci.com/gh/ryz310/gem_comet) [![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
 
 # GemComet
 
