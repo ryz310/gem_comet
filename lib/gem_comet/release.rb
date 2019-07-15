@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 module GemComet
-  class Release
-    attr_reader :version, :base_branch, :release_branch
-
+  # Creates pull requests for gem release and that preparation
+  class Release < ServiceAbstract
     CONFIG_FILE_PATH = '.gem_comet.yml'
 
-    def self.call(*args)
-      new(*args).send(:call)
-    end
-
     private
+
+    attr_reader :version, :base_branch, :release_branch
 
     def initialize(version:)
       verify_version_number(version)

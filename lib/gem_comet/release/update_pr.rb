@@ -3,16 +3,10 @@
 module GemComet
   class Release
     # Creates a pull request for release preparation
-    class UpdatePR
-      attr_reader :version
-
-      def self.call(*args)
-        new(*args).send(:call)
-      end
-
+    class UpdatePR < ServiceAbstract
       private
 
-      attr_reader :pr_comet
+      attr_reader :version, :pr_comet
 
       def initialize(version:, base_branch:)
         @version = version
