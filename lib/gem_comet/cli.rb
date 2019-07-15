@@ -12,7 +12,7 @@ module GemComet
     desc 'init', 'Creates a configure file'
     def init
       template '../../template/.gem_comet.yml.erb', '.gem_comet.yml',
-               version: GemComet::VERSION
+               version: GemComet::Config::CURRENT_VERSION
     end
 
     desc 'release VERSION', 'Creates update PR and release PR'
