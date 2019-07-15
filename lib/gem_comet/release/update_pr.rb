@@ -4,8 +4,6 @@ module GemComet
   class Release
     # Creates a pull request for release preparation
     class UpdatePR < ServiceAbstract
-      include Thor::Actions
-
       private
 
       attr_reader :version, :pr_comet, :version_file_path
@@ -24,9 +22,12 @@ module GemComet
 
       def update_version_file
         pr_comet.commit ':comet: Update version number' do
-          gsub_file version_file_path,
-                    /VERSION\s*=\s*(['"])(.+?)(['"])/,
-                    "VERSION = \\1#{version}\\3"
+          version_file = File.read(version_file_path)
+          version_file.sub!(
+            /VERSION\s*=\s*(['"])(.+?)(['"])/,
+            "VERSION = \\1#{version}\\3"
+          )
+          File.write(version_file_path, version_file)
         end
       end
 
