@@ -9,6 +9,7 @@ AllCops:
 
 Metrics/BlockLength:
   Exclude:
+    - 'gem_comet.gemspec'
     - 'spec/**/*'
 
 RSpec/NestedGroups:
