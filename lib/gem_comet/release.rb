@@ -3,6 +3,8 @@
 module GemComet
   # Creates pull requests for gem release and that preparation
   class Release < ServiceAbstract
+    CONFIG_FILE_PATH = '.gem_comet.yml'
+
     private
 
     attr_reader :version, :config
@@ -11,7 +13,7 @@ module GemComet
       verify_version_number(version)
 
       @version = version
-      @config = Config.call
+      @config = Config.call(file_path: CONFIG_FILE_PATH)
     end
 
     def call
