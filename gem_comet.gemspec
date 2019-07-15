@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Release a gem quickly like comets'
   spec.description   = 'Provides CLI command of gem release'
-  spec.homepage      =  'https://github.com/ryz310/gem_comet'
+  spec.homepage      = 'https://github.com/ryz310/gem_comet'
   spec.license       = 'MIT'
 
   spec.files         = Dir.chdir(File.expand_path(__dir__)) do
@@ -27,10 +27,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rubocop-rspec'
+  spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'yard'
 end
