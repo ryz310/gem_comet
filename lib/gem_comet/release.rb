@@ -21,21 +21,8 @@ module GemComet
     end
 
     def call
-      update_pr = PrComet.new(base: base_branch, branch: "update/v#{version}")
-      release_pr = PrComet.new(base: release_branch, branch: base_branch)
-
-      # Modify your version file
-      update_pr.commit ':comet: Update version number' do
-        gsub_file config['version_file_path'],
-                  /VERSION\s*=\s*(['"])(.+?)(['"])/,
-                  "VERSION = \\1#{version}\\3"
-      end
-
-      # Bundle Update
-      update_pr.commit(':comet: $ bundle update') { `bundle update` }
-
-      update_pr.create!(title: "Update v#{version}", body: '')
-      release_pr.create!(title: "Release v#{version}", body: '', validate: false)
+      UpdatePR.call(version: version, base_branch: base_branch)
+      ReleasePR.call(version: version, base_branch: base_branch, release_branch: release_branch)
     end
 
     def config
