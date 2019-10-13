@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module GemComet
-  # Edits version file of gem
+  # Edits version file of the gem
   class VersionEditor
     attr_reader :version_file_path
 
