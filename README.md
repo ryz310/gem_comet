@@ -28,9 +28,23 @@ release:
 
 ## Usage
 
+### Display changelogs
+
+Displays changelogs from last release to HEAD commit.
+
+```
+$ gem_comet changelog
+```
+
+### Release
+
+Creates update PR and release PR.
+
 ```
 $ gem_comet release { The version number you want to release. e.g. "1.2.3" }
 ```
+
+Then, you should check pull requests on your GitHub repository page. You will see two pull requests: "Update v1.2.3" and "Release v1.2.3". First, you should check "Update v1.2.3" and merge. Next, you should check "Release v1.2.3" and merge. The "Release v1.2.3" destination is the release branch. You should set up CI that to deploy the gem automatically.
 
 ## Development
 
