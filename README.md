@@ -2,29 +2,35 @@
 
 # GemComet
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gem_comet`. To experiment with that code, run `bin/console` for an interactive prompt.
+The `gem_comet` is a command line tool which to update and release your gem.
+Install as following:
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'gem_comet'
+```
+$ gem install 'gem_comet'
 ```
 
-And then execute:
+Initialize `gem_comet` as following:
 
-    $ bundle
+```
+$ gem_comet init
+```
 
-Or install it yourself as:
+Then, edit the created file: `.gem_comet.yml` as following.
 
-    $ gem install gem_comet
+```yaml
+version: 1
+
+release:
+  base_branch: master
+  release_branch: release
+  version_file_path: { Path of the version file. e.g. lib/gem_comet/version.rb }
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ gem_comet release { The version number you want to release. e.g. "1.2.3" }
+```
 
 ## Development
 
