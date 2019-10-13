@@ -8,7 +8,7 @@ module GemComet
     CURRENT_VERSION = 1.1
 
     V1_1 = TypeStruct.new(
-      version: CURRENT_VERSION,
+      version: 1.0...2.0,
       release: TypeStruct.new(
         base_branch: String,
         release_branch: String,
