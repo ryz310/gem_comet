@@ -13,11 +13,18 @@ module GemComet
     def init
       template '../../template/.gem_comet.yml.erb', '.gem_comet.yml',
                version: GemComet::Config::CURRENT_VERSION
+      template '../../template/CHANGELOG.md.erb', 'CHANGELOG.md'
     end
 
     desc 'release VERSION', 'Creates update PR and release PR'
     def release(version)
       Release.call(version: version)
+    end
+
+    desc 'changelog', 'Displays changelogs from last release to HEAD commit'
+    def changelog
+      version_editor = VersionEditor.new
+      puts ChangelogGenerator.call(current_version: version_editor.current_version)
     end
 
     desc 'version', 'Shows current version'
