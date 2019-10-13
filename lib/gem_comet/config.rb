@@ -5,6 +5,7 @@ module GemComet
   class Config < ServiceAbstract
     using TypeStruct::Union::Ext
 
+    CONFIG_FILE_PATH = '.gem_comet.yml'
     CURRENT_VERSION = 1.1
 
     V1_1 = TypeStruct.new(
@@ -21,7 +22,7 @@ module GemComet
 
     attr_reader :file_path
 
-    def initialize(file_path:)
+    def initialize(file_path: CONFIG_FILE_PATH)
       @file_path = file_path
     end
 
