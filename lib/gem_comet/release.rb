@@ -38,7 +38,7 @@ module GemComet
     end
 
     def verify_version_number(version)
-      return if version.match?(/\A\d+\.\d+\.\d+(\.(pre|beta|rc)\d?)?\z/)
+      return if version.match?(/\A\d+\.\d+\.\d+(\.(pre|beta|rc)\d*)?\z/)
 
       raise 'Verion number must be like a "1.2.3".'
     end
