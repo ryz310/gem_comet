@@ -29,7 +29,7 @@ module GemComet
 
         pr_comet.commit ':comet: Update CHANGELOG.md' do
           inject_into_file changelog_file_path, after: "# Change log\n" do
-            Changelog.call(current_version: version_editor.current_version, new_version: version)
+            ChangelogGenerator.call(current_version: version_editor.current_version, new_version: version)
           end
         end
       end

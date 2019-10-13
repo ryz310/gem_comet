@@ -2,7 +2,7 @@
 
 module GemComet
   # Generates changelog from git log
-  class Changelog < ServiceAbstract
+  class ChangelogGenerator < ServiceAbstract
     attr_reader :last_label, :new_version
 
     # @param current_version [String] Current version of your gem
