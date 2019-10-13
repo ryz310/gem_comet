@@ -3,8 +3,10 @@
 module GemComet
   # The abstract class for service classes
   class ServiceAbstract
-    def self.call(*args)
-      new(*args).send(:call)
+    private_class_method :new
+
+    def self.call(**args)
+      new(**args).send(:call)
     end
 
     private
