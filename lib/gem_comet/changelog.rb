@@ -3,17 +3,41 @@
 module GemComet
   # Generates changelog from git log
   class Changelog < ServiceAbstract
-    attr_reader :last_label
+    attr_reader :last_label, :new_version
 
-    def initialize(last_label:)
-      @last_label = last_label
+    # @param current_version [String] Current version of your gem
+    # @param new_version [String] Next version of your gem
+    def initialize(current_version:, new_version: nil)
+      @last_label = "v#{current_version}"
+      @new_version = new_version || 'NEW'
     end
 
     private
 
     MERGE_COMMIT_TITLE = /Merge pull request #(\d+) from (.+)/.freeze
 
+    # Returns changelogs as markdown format from current version to HEAD commit.
+    #
+    # @return [String] Changelogs as markdown format
     def call
+      <<~MARKDOWN
+
+        ## #{new_version} (#{Date.today.strftime('%b %d, %Y')})
+
+        ### Feature
+        ### Bugfix
+        ### Breaking Change
+        ### Misc
+
+        #{changelogs.reverse.join("\n")}
+
+      MARKDOWN
+    end
+
+    # Returns array of changelogs as markdown format.
+    #
+    # @return [Array<String>] Array of changelogs as markdown format
+    def changelogs
       merge_commits.map do |merge_commit|
         next unless merge_commit.match?(MERGE_COMMIT_TITLE)
 
@@ -22,7 +46,7 @@ module GemComet
         description = extract_description(merge_commit) || extract_branch_name(merge_commit)
 
         "* #{description} ([##{pull_request_number}](#{pull_request_url}))"
-      end.reverse.compact.join("\n")
+      end.compact
     end
 
     # Extracts PR number from merge commit string.
