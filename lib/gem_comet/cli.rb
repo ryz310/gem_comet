@@ -21,6 +21,12 @@ module GemComet
       Release.call(version: version)
     end
 
+    desc 'changelog', 'Displays changelogs from last release to HEAD commit'
+    def changelog
+      version_editor = VersionEditor.new
+      puts Changelog.call(current_version: version_editor.current_version)
+    end
+
     desc 'version', 'Shows current version'
     def version
       puts GemComet::VERSION
