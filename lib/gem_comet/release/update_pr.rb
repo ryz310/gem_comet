@@ -6,16 +6,16 @@ module GemComet
     class UpdatePR < ServiceAbstract
       include Thor::Actions
 
-      def initialize(version:, base_branch:, version_file_path:, changelog_file_path: nil)
+      def initialize(version:, base_branch:, changelog_file_path: nil)
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
-        @version_file_path = version_file_path
+        @version_editor = VersionEditor.new
         @changelog_file_path = changelog_file_path
       end
 
       private
 
-      attr_reader :version, :pr_comet, :version_file_path, :changelog_file_path
+      attr_reader :version, :pr_comet, :version_editor, :changelog_file_path
 
       def call
         update_changelog
@@ -24,25 +24,19 @@ module GemComet
         create_pull_request
       end
 
-      VERSION_NUMBER_PATTERN = /VERSION\s*=\s*(['"])(.+?)(['"])/.freeze
-
       def update_changelog
         return if changelog_file_path.nil?
 
         pr_comet.commit ':comet: Update CHANGELOG.md' do
-          version_file = File.read(version_file_path)
-          current_version = VERSION_NUMBER_PATTERN.match(version_file).captures[1]
           inject_into_file changelog_file_path, after: "# Change log\n" do
-            generate_changelog_template(current_version)
+            Changelog.call(current_version: version_editor.current_version, new_version: version)
           end
         end
       end
 
       def update_version_file
         pr_comet.commit ':comet: Update version number' do
-          version_file = File.read(version_file_path)
-          version_file.sub!(VERSION_NUMBER_PATTERN, "VERSION = \\1#{version}\\3")
-          File.write(version_file_path, version_file)
+          version_editor.update!(new_version: version)
         end
       end
 
@@ -52,21 +46,6 @@ module GemComet
 
       def create_pull_request
         pr_comet.create!(title: "Update v#{version}", body: '')
-      end
-
-      def generate_changelog_template(current_version)
-        <<~MARKDOWN
-
-          ## #{version} (#{Date.today.strftime('%b %d, %Y')})
-
-          ### Breaking Change
-          ### Bugfix
-          ### Feature
-          ### Misc
-
-          #{Changelog.call(last_label: "v#{current_version}")}
-
-        MARKDOWN
       end
     end
   end
