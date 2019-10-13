@@ -18,6 +18,8 @@ module GemComet
       )
     )
 
+    def initialize; end
+
     private
 
     def call
