@@ -4,18 +4,16 @@ module GemComet
   class Release
     # Creates a pull request for release preparation
     class UpdatePR < ServiceAbstract
-      include Thor::Actions
-
-      def initialize(version:, base_branch:, changelog_file_path: nil)
+      def initialize(version:, base_branch:)
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
         @version_editor = VersionEditor.new
-        @changelog_file_path = changelog_file_path
+        @changelog_editor = ChangelogEditor.new
       end
 
       private
 
-      attr_reader :version, :pr_comet, :version_editor, :changelog_file_path
+      attr_reader :version, :pr_comet, :version_editor, :changelog_editor
 
       def call
         update_changelog
@@ -25,12 +23,12 @@ module GemComet
       end
 
       def update_changelog
-        return if changelog_file_path.nil?
-
         pr_comet.commit ':comet: Update CHANGELOG.md' do
-          inject_into_file changelog_file_path, after: "# Change log\n" do
-            ChangelogGenerator.call(current_version: version_editor.current_version, new_version: version)
-          end
+          changelog = ChangelogGenerator.call(
+            current_version: version_editor.current_version,
+            new_version: version
+          )
+          changelog_editor.append!(content: changelog)
         end
       end
 

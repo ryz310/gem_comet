@@ -22,8 +22,7 @@ module GemComet
     def update_pr_args
       {
         version: version,
-        base_branch: config.release.base_branch,
-        changelog_file_path: config.release.changelog_file_path
+        base_branch: config.release.base_branch
       }
     end
 
