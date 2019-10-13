@@ -2,6 +2,7 @@
 
 require 'thor'
 require 'type_struct'
+require 'type_struct/ext'
 require 'pr_comet'
 require 'yaml'
 require 'gem_comet/version'

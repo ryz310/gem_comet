@@ -3,14 +3,17 @@
 module GemComet
   # Loads the config file
   class Config < ServiceAbstract
-    CURRENT_VERSION = 1
+    using TypeStruct::Union::Ext
 
-    V1 = TypeStruct.new(
+    CURRENT_VERSION = 1.1
+
+    V1_1 = TypeStruct.new(
       version: CURRENT_VERSION,
       release: TypeStruct.new(
         base_branch: String,
         release_branch: String,
-        version_file_path: String
+        version_file_path: String,
+        changelog_file_path: String | nil
       )
     )
 
@@ -23,7 +26,7 @@ module GemComet
     end
 
     def call
-      V1.from_hash(YAML.safe_load(File.open(file_path)))
+      V1_1.from_hash(YAML.safe_load(File.open(file_path)))
     rescue Errno::ENOENT
       raise 'Not initialized. Please run `$ gem_comet init`.'
     rescue TypeStruct::MultiTypeError => e

@@ -25,7 +25,8 @@ module GemComet
       {
         version: version,
         base_branch: config.release.base_branch,
-        version_file_path: config.release.version_file_path
+        version_file_path: config.release.version_file_path,
+        changelog_file_path: config.release.changelog_file_path
       }
     end
 
