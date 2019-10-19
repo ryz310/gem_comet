@@ -1,5 +1,14 @@
 # Change log
 
+## 0.3.0 (Oct 19, 2019)
+
+### Feature
+### Bugfix
+### Breaking Change
+### Misc
+
+* Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([#25](https://github.com/ryz310/gem_comet/pull/25))
+
 ## 0.2.0 (Oct 14, 2019)
 
 ### Feature
