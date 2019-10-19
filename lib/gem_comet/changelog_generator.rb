@@ -34,7 +34,6 @@ module GemComet
         ### Misc
 
         #{changelogs.reverse.join("\n")}
-
       MARKDOWN
     end
 
