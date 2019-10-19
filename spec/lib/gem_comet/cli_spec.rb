@@ -49,7 +49,7 @@ RSpec.describe GemComet::CLI do
     it do
       cli.changelog
       expect(GemComet::ChangelogGenerator)
-        .to have_received(:call).with(current_version: version)
+        .to have_received(:call).with(from_version: version)
     end
   end
 
