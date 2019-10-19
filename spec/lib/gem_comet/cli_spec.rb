@@ -43,12 +43,12 @@ RSpec.describe GemComet::CLI do
 
     before do
       allow(GemComet::VersionEditor).to receive(:new).and_return(version_editor)
-      allow(GemComet::ChangelogGenerator).to receive(:call)
+      allow(GemComet::Changelog::Generator).to receive(:call)
     end
 
     it do
       cli.changelog
-      expect(GemComet::ChangelogGenerator)
+      expect(GemComet::Changelog::Generator)
         .to have_received(:call).with(from_version: version)
     end
   end
