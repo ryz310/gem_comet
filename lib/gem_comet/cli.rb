@@ -21,10 +21,39 @@ module GemComet
       Release.call(version: version)
     end
 
-    desc 'changelog', 'Displays changelogs from last release to HEAD commit'
+    desc 'changelog', 'Displays changelogs'
+    option :from,
+           type: :string,
+           aliases: :f,
+           desc: 'The beginning of version number to create a changelog. ' \
+                 'Default is specified current version.'
+    option :to,
+           type: :string,
+           aliases: :t,
+           desc: 'The end of version number to create a changelog. ' \
+                 'Default is specified `HEAD`.'
+    option :append,
+           type: :boolean,
+           aliases: :a,
+           default: false,
+           desc: 'Appends execution result to CHANGELOG.md.'
+    option :prepend,
+           type: :boolean,
+           aliases: :p,
+           default: false,
+           desc: 'Prepends execution result to CHANGELOG.md.'
     def changelog
-      version_editor = VersionEditor.new
-      puts ChangelogGenerator.call(current_version: version_editor.current_version)
+      puts Changelog.call(
+        from_version: options[:from],
+        to_version: options[:to],
+        append: options[:append],
+        prepend: options[:prepend]
+      )
+    end
+
+    desc 'versions', 'Displays version numbers of your gem.'
+    def versions
+      puts `git tag`
     end
 
     desc 'version', 'Shows current version'

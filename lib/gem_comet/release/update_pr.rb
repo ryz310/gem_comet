@@ -8,7 +8,7 @@ module GemComet
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
         @version_editor = VersionEditor.new
-        @changelog_editor = ChangelogEditor.new
+        @changelog_editor = Changelog::Editor.new
       end
 
       private
@@ -24,11 +24,11 @@ module GemComet
 
       def update_changelog
         pr_comet.commit ':comet: Update CHANGELOG.md' do
-          changelog = ChangelogGenerator.call(
-            current_version: version_editor.current_version,
+          changelog = Changelog::Generator.call(
+            from_version: version_editor.current_version,
             new_version: version
           )
-          changelog_editor.append!(content: changelog)
+          changelog_editor.prepend!(content: changelog)
         end
       end
 
