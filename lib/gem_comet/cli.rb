@@ -53,7 +53,8 @@ module GemComet
 
     desc 'versions', 'Displays version numbers of your gem.'
     def versions
-      puts `git tag`
+      tags = `git tag --list 'v*' --format='%(tag) %(taggerdate:short)'`
+      puts tags.lines.map(&:chomp).map(&:split).sort_by(&:last).map(&:first)
     end
 
     desc 'version', 'Shows current version'
