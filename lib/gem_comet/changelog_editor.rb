@@ -22,5 +22,16 @@ module GemComet
       changelog_file.insert(position, content)
       File.write(changelog_file_path, changelog_file)
     end
+
+    # Appends the content to CHANGELOG.md with new line.
+    #
+    # @param content [String] Character string you want to append
+    def append!(content:)
+      return if changelog_file_path.nil?
+
+      changelog_file = File.read(changelog_file_path)
+      changelog_file.concat("\n", content)
+      File.write(changelog_file_path, changelog_file)
+    end
   end
 end
