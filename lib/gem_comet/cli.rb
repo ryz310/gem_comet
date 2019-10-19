@@ -32,11 +32,30 @@ module GemComet
            aliases: :t,
            desc: 'The end of version number to create a changelog. ' \
                  'Default is specified `HEAD`.'
+    option :append,
+           type: :boolean,
+           aliases: :a,
+           default: false,
+           desc: 'Appends execution result to CHANGELOG.md.'
+    option :prepend,
+           type: :boolean,
+           aliases: :p,
+           default: false,
+           desc: 'Prepends execution result to CHANGELOG.md.'
     def changelog
       version_editor = VersionEditor.new
       from_version = options[:from] || version_editor.current_version
       to_version = options[:to]
-      puts ChangelogGenerator.call(from_version: from_version, to_version: to_version)
+      result = ChangelogGenerator.call(from_version: from_version, to_version: to_version)
+      changelog_editor = ChangelogEditor.new
+      case
+      when options[:append]
+        changelog_editor.append!(content: result)
+      when options[:prepend]
+        changelog_editor.prepend!(content: result)
+      else
+        puts result
+      end
     end
 
     desc 'versions', 'Displays version numbers of your gem.'
