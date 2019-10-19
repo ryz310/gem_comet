@@ -3,13 +3,17 @@
 module GemComet
   # Generates changelog from git log
   class ChangelogGenerator < ServiceAbstract
-    attr_reader :from, :new_version
+    attr_reader :from, :to, :new_version
 
     # @param from_version [String] The beginning of version number to create a changelog
+    # @param to_version [String]
+    #   The end of version number to create a changelog. If ommit this option,
+    #   it's specified `HEAD`.
     # @param new_version [String] Next version of your gem
-    def initialize(from_version:, new_version: nil)
+    def initialize(from_version:, to_version: nil, new_version: nil)
       @from = "v#{from_version}"
-      @new_version = new_version || 'NEW'
+      @to = to_version.nil? ? 'HEAD' : "v#{to_version}"
+      @new_version = new_version || to
     end
 
     private
@@ -94,7 +98,7 @@ module GemComet
     #
     # @return [String] Get only merge commit logs
     def merge_commit_log
-      @merge_commit_log ||= `git log --merges #{from}..HEAD`
+      @merge_commit_log ||= `git log --merges #{from}..#{to}`
     end
 
     # Returns the git origin URL via git command.
