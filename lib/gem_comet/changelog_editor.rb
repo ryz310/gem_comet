@@ -11,10 +11,10 @@ module GemComet
       @changelog_file_path = Config.call.release.changelog_file_path
     end
 
-    # Appends the content to CHANGELOG.md.
+    # Prepends the content to CHANGELOG.md.
     #
-    # @param content [String] Character string you want to append
-    def append!(content:)
+    # @param content [String] Character string you want to prepend
+    def prepend!(content:)
       return if changelog_file_path.nil?
 
       changelog_file = File.read(changelog_file_path)

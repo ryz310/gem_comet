@@ -28,7 +28,7 @@ module GemComet
             from_version: version_editor.current_version,
             new_version: version
           )
-          changelog_editor.append!(content: changelog)
+          changelog_editor.prepend!(content: changelog)
         end
       end
 
