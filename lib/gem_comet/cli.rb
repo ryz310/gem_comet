@@ -39,6 +39,11 @@ module GemComet
       puts ChangelogGenerator.call(from_version: from_version, to_version: to_version)
     end
 
+    desc 'versions', 'Displays version numbers of your gem.'
+    def versions
+      puts `git tag`
+    end
+
     desc 'version', 'Shows current version'
     def version
       puts GemComet::VERSION
