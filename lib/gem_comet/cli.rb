@@ -22,9 +22,21 @@ module GemComet
     end
 
     desc 'changelog', 'Displays changelogs from last release to HEAD commit'
+    option :from,
+           type: :string,
+           aliases: :f,
+           desc: 'The beginning of version number to create a changelog. ' \
+                 'Default is specified current version.'
+    option :to,
+           type: :string,
+           aliases: :t,
+           desc: 'The end of version number to create a changelog. ' \
+                 'Default is specified `HEAD`.'
     def changelog
       version_editor = VersionEditor.new
-      puts ChangelogGenerator.call(current_version: version_editor.current_version)
+      from_version = options[:from] || version_editor.current_version
+      to_version = options[:to]
+      puts ChangelogGenerator.call(from_version: from_version, to_version: to_version)
     end
 
     desc 'version', 'Shows current version'
