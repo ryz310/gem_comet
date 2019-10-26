@@ -6,7 +6,7 @@ RSpec.describe GemComet::VersionHistory do
     <<~RESULT
       v0.1.0 2019-07-15
       v0.1.1 2019-10-13
-      v0.2.0 2019-10-13
+      v0.2.0 2019-10-14
       v0.3.0 2019-10-19
     RESULT
   end
@@ -40,6 +40,28 @@ RSpec.describe GemComet::VersionHistory do
       let(:version) { 'xxx' }
 
       it { expect { previous_version }.to raise_error 'The specified version cannot be found' }
+    end
+  end
+
+  describe '#versioning_date_of' do
+    subject(:versioning_date) { instance.versioning_date_of(version) }
+
+    context 'with "HEAD"' do
+      let(:version) { 'HEAD' }
+
+      it { is_expected.to eq Date.today }
+    end
+
+    context 'with "v0.2.0", which added at 2019-10-14' do
+      let(:version) { 'v0.2.0' }
+
+      it { is_expected.to eq Date.new(2019, 10, 14) }
+    end
+
+    context 'with a wrong version number' do
+      let(:version) { 'xxx' }
+
+      it { expect { versioning_date }.to raise_error 'The specified version cannot be found' }
     end
   end
 end
