@@ -4,17 +4,13 @@ module GemComet
   class Changelog
     # Generates changelog from git log
     class Generator < ServiceAbstract
-      attr_reader :from, :to, :new_version, :origin_url
+      attr_reader :version, :title, :origin_url
 
-      # @param from_version [String] The beginning of version number to create a changelog
-      # @param to_version [String]
-      #   The end of version number to create a changelog. If ommit this option,
-      #   it's specified `HEAD`.
-      # @param new_version [String] Next version of your gem
-      def initialize(from_version:, to_version: nil, new_version: nil)
-        @from = "v#{from_version}"
-        @to = to_version.nil? ? 'HEAD' : "v#{to_version}"
-        @new_version = new_version || to
+      # @param version [String] The end of version number to create a changelog.
+      # @param title [String] Next version of your gem
+      def initialize(version:, title: nil)
+        @version = version
+        @title = title || version
         @origin_url = RepositoryUrl.call
       end
 
@@ -25,10 +21,11 @@ module GemComet
       # Returns changelogs as markdown format from current version to HEAD commit.
       #
       # @return [String] Changelogs as markdown format
+      # @raise [RuntimeError] The specified version cannot be found
       def call
         <<~MARKDOWN
 
-          ## #{new_version} (#{Date.today.strftime('%b %d, %Y')})
+          ## #{title} (#{versioning_date})
 
           ### Feature
           ### Bugfix
@@ -37,6 +34,13 @@ module GemComet
 
           #{changelogs.reverse.join("\n")}
         MARKDOWN
+      end
+
+      # Returns the versioning date
+      #
+      # @return [String] The versioning date. e.g. "Oct 26, 2019"
+      def versioning_date
+        VersionHistory.new.versioning_date_of(version).strftime('%b %d, %Y')
       end
 
       # Returns array of changelogs as markdown format.
@@ -99,7 +103,14 @@ module GemComet
       #
       # @return [String] Get only merge commit logs
       def merge_commit_log
-        @merge_commit_log ||= `git log --merges #{from}..#{to}`
+        @merge_commit_log ||= `git log --merges #{prev_version}..#{version}`
+      end
+
+      # Get a previous version number from the specified version number
+      #
+      # @raise [RuntimeError] The specified version cannot be found
+      def prev_version
+        @prev_version ||= VersionHistory.new.previous_version_from(version)
       end
     end
   end
