@@ -17,7 +17,7 @@ RSpec.describe GemComet::VersionHistory do
 
   describe '#versions' do
     it 'returns an array of version numbers' do
-      expect(instance.versions).to eq %w[v0.1.0 v0.1.1 v0.2.0 v0.3.0]
+      expect(instance.versions).to eq %w[v0.1.0 v0.1.1 v0.2.0 v0.3.0 HEAD]
     end
   end
 

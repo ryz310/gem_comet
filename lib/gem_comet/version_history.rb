@@ -11,7 +11,7 @@ module GemComet
     #
     # @return [Array<String>] An array of version numbers
     def versions
-      array_of_version_and_date.map(&:first)
+      array_of_version_and_date.map(&:first).push('HEAD')
     end
 
     # Get a previous version number from the specified version number
