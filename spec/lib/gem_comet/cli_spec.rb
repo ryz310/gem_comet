@@ -38,18 +38,14 @@ RSpec.describe GemComet::CLI do
   end
 
   describe '#changelog' do
-    let(:version) { '1.2.3' }
-    let(:version_editor) { instance_double(GemComet::VersionEditor, current_version: version) }
-
     before do
-      allow(GemComet::VersionEditor).to receive(:new).and_return(version_editor)
-      allow(GemComet::Changelog::Generator).to receive(:call)
+      allow(GemComet::Changelog).to receive(:call)
     end
 
     it do
       cli.changelog
-      expect(GemComet::Changelog::Generator)
-        .to have_received(:call).with(from_version: version, to_version: nil)
+      expect(GemComet::Changelog)
+        .to have_received(:call).with(version: nil, append: nil, prepend: nil)
     end
   end
 

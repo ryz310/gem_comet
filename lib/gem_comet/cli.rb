@@ -22,16 +22,13 @@ module GemComet
     end
 
     desc 'changelog', 'Displays changelogs'
-    option :from,
+    option :version,
            type: :string,
-           aliases: :f,
-           desc: 'The beginning of version number to create a changelog. ' \
-                 'Default is specified current version.'
-    option :to,
-           type: :string,
-           aliases: :t,
-           desc: 'The end of version number to create a changelog. ' \
-                 'Default is specified `HEAD`.'
+           aliases: :v,
+           default: 'HEAD',
+           desc: 'The version number to create a changelog. ' \
+                 'Default is specified `HEAD`.',
+           banner: 'v1.2.3'
     option :append,
            type: :boolean,
            aliases: :a,
@@ -44,17 +41,17 @@ module GemComet
            desc: 'Prepends execution result to CHANGELOG.md.'
     def changelog
       puts Changelog.call(
-        from_version: options[:from],
-        to_version: options[:to],
+        version: options[:version],
         append: options[:append],
         prepend: options[:prepend]
       )
+    rescue StandardError => e
+      puts e.message
     end
 
     desc 'versions', 'Displays version numbers of your gem.'
     def versions
-      tags = `git tag --list 'v*' --format='%(tag) %(taggerdate:short)'`
-      puts tags.lines.map(&:chomp).map(&:split).sort_by(&:last).map(&:first)
+      puts VersionHistory.new.versions
     end
 
     desc 'version', 'Shows current version'
