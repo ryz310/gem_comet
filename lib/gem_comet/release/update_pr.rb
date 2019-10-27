@@ -39,7 +39,7 @@ module GemComet
       end
 
       def bundle_update
-        pr_comet.commit(':comet: $ bundle update') { `bundle update` }
+        pr_comet.commit(':comet: $ bundle update') { BundleUpdater.call }
       end
 
       def create_pull_request
