@@ -3,15 +3,23 @@
 ## v0.4.0 (Oct 27, 2019)
 
 ### Feature
-### Bugfix
-### Breaking Change
-### Misc
 
 * Modify to display gem versions sorted by tagged date ([#32](https://github.com/ryz310/gem_comet/pull/32))
-* Fix broken links included by the modified change log ([#34](https://github.com/ryz310/gem_comet/pull/34))
 * Add the legend to creating pull requests ([#33](https://github.com/ryz310/gem_comet/pull/33))
-* Changelog initializer ([#35](https://github.com/ryz310/gem_comet/pull/35))
 * Open the GitHub pull request page at release ([#36](https://github.com/ryz310/gem_comet/pull/36))
+
+### Bugfix
+
+* Fix broken links included by the modified change log ([#34](https://github.com/ryz310/gem_comet/pull/34))
+
+### Breaking Change
+
+* Changelog initializer ([#35](https://github.com/ryz310/gem_comet/pull/35))
+    * The `$ gem_comet changelog` command options has changed:
+        * Before:
+            * `$ gem_comet changelog --from=0.1.0 --to=0.1.1`
+        * After:
+            * `$ gem_comet changelog --version=v0.1.1`
 
 ## 0.3.0 (Oct 19, 2019)
 
