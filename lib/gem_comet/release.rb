@@ -17,6 +17,7 @@ module GemComet
     def call
       UpdatePR.call(update_pr_args)
       ReleasePR.call(release_pr_args)
+      OpenGithubPullsPage.call
     end
 
     def update_pr_args
