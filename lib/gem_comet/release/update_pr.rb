@@ -43,7 +43,7 @@ module GemComet
       end
 
       def create_pull_request
-        pr_comet.create!(title: "Update v#{version}", body: '')
+        pr_comet.create!(title: "Update v#{version}", body: LEGEND)
       end
     end
   end
