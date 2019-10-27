@@ -23,12 +23,20 @@ RSpec.describe GemComet::CLI do
       let(:version) { '1.2.3' }
       let(:pr_comet) { instance_double(PrComet, commit: nil, create!: nil) }
 
-      before { allow(PrComet).to receive(:new).and_return(pr_comet) }
+      before do
+        allow(PrComet).to receive(:new).and_return(pr_comet)
+        allow(GemComet::OpenGithubPullsPage).to receive(:call)
+      end
 
       it 'executes commit and PR creation' do
         release!
         expect(pr_comet).to have_received(:commit).exactly(3).times
         expect(pr_comet).to have_received(:create!).twice
+      end
+
+      it 'opens the GitHub pulls page' do
+        release!
+        expect(GemComet::OpenGithubPullsPage).to have_received(:call)
       end
     end
 
