@@ -4,7 +4,7 @@ module GemComet
   class Changelog
     # Generates changelog from git log
     class Generator < ServiceAbstract
-      attr_reader :from, :to, :new_version
+      attr_reader :from, :to, :new_version, :origin_url
 
       # @param from_version [String] The beginning of version number to create a changelog
       # @param to_version [String]
@@ -15,6 +15,7 @@ module GemComet
         @from = "v#{from_version}"
         @to = to_version.nil? ? 'HEAD' : "v#{to_version}"
         @new_version = new_version || to
+        @origin_url = RepositoryUrl.call
       end
 
       private
@@ -99,13 +100,6 @@ module GemComet
       # @return [String] Get only merge commit logs
       def merge_commit_log
         @merge_commit_log ||= `git log --merges #{from}..#{to}`
-      end
-
-      # Returns the git origin URL via git command.
-      #
-      # @return [String] The origin URL
-      def origin_url
-        @origin_url ||= `git remote get-url --push origin`.sub('.git', '').chomp
       end
     end
   end
