@@ -9,11 +9,11 @@ module GemComet
       new(*args).send(:call)
     end
 
-    private
-
     def initialize(_args)
       raise "Please implement #{self.class}##{__method__}"
     end
+
+    private
 
     def call
       raise "Please implement #{self.class}##{__method__}"

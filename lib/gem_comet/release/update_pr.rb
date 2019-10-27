@@ -24,10 +24,7 @@ module GemComet
 
       def update_changelog
         pr_comet.commit ':comet: Update CHANGELOG.md' do
-          changelog = Changelog::Generator.call(
-            from_version: version_editor.current_version,
-            new_version: version
-          )
+          changelog = Changelog::Generator.call(version: 'HEAD', title: "v#{version}")
           changelog_editor.prepend!(content: changelog)
         end
       end
@@ -39,11 +36,11 @@ module GemComet
       end
 
       def bundle_update
-        pr_comet.commit(':comet: $ bundle update') { `bundle update` }
+        pr_comet.commit(':comet: $ bundle update') { BundleUpdater.call }
       end
 
       def create_pull_request
-        pr_comet.create!(title: "Update v#{version}", body: '')
+        pr_comet.create!(title: "Update v#{version}", body: LEGEND)
       end
     end
   end
