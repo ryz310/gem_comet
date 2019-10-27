@@ -19,6 +19,8 @@ module GemComet
     desc 'release VERSION', 'Creates update PR and release PR'
     def release(version)
       Release.call(version: version)
+    rescue StandardError => e
+      puts e.message
     end
 
     desc 'changelog', 'Displays changelogs'
@@ -52,6 +54,8 @@ module GemComet
     desc 'versions', 'Displays version numbers of your gem.'
     def versions
       puts VersionHistory.new.versions
+    rescue StandardError => e
+      puts e.message
     end
 
     desc 'version', 'Shows current version'

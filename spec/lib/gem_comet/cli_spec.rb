@@ -32,7 +32,7 @@ RSpec.describe GemComet::CLI do
       let(:version) { '1,2,3' }
 
       it do
-        expect { release! }.to raise_error(/Verion number must be like a "1.2.3"/)
+        expect { release! }.to output(/Verion number must be like a "1.2.3"/).to_stdout
       end
     end
   end
