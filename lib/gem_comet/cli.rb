@@ -14,6 +14,9 @@ module GemComet
       template '../../template/.gem_comet.yml.erb', '.gem_comet.yml',
                version: GemComet::Config::CURRENT_VERSION
       template '../../template/CHANGELOG.md.erb', 'CHANGELOG.md'
+      Changelog::Initializer.call
+    rescue StandardError => e
+      puts e.message
     end
 
     desc 'release VERSION', 'Creates update PR and release PR'

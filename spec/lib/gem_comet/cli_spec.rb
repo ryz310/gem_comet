@@ -4,11 +4,15 @@ RSpec.describe GemComet::CLI do
   let(:cli) { described_class.new }
 
   describe '#init' do
-    before { allow(cli).to receive(:template) }
+    before do
+      allow(cli).to receive(:template)
+      allow(GemComet::Changelog::Initializer).to receive(:call)
+    end
 
-    it do
+    it 'creates 2 template files and initializes the CHANGELOG.md' do
       cli.init
-      expect(cli).to have_received(:template).twice
+      expect(cli).to have_received(:template).twice.ordered
+      expect(GemComet::Changelog::Initializer).to have_received(:call).ordered
     end
   end
 
