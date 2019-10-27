@@ -24,10 +24,7 @@ module GemComet
 
       def update_changelog
         pr_comet.commit ':comet: Update CHANGELOG.md' do
-          changelog = Changelog::Generator.call(
-            from_version: version_editor.current_version,
-            new_version: version
-          )
+          changelog = Changelog::Generator.call(version: 'HEAD', title: "v#{version}")
           changelog_editor.prepend!(content: changelog)
         end
       end
