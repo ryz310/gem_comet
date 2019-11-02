@@ -41,7 +41,8 @@ module GemComet
     # @return [Array<Array<String>>] An array of versions and date
     #   e.g. [['v0.1.0', '2019-07-15'], ['v0.2.0', '2019-10-14']]
     def array_of_version_and_date
-      @array_of_version_and_date ||= git_tag_list.lines.map(&:chomp).map(&:split).sort_by(&:last)
+      @array_of_version_and_date ||=
+        git_tag_list.lines.map(&:chomp).map(&:split).reject(&:empty?).sort_by(&:last)
     end
 
     # Finds an index of the specified version number

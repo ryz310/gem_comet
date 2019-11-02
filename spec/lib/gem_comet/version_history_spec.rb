@@ -7,6 +7,7 @@ RSpec.describe GemComet::VersionHistory do
       v0.1.0 2019-07-15
       v0.1.1 2019-10-13
       v0.2.0 2019-10-14
+
       v0.3.0 2019-10-19
     RESULT
   end
