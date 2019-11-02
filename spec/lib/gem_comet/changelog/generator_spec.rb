@@ -15,10 +15,10 @@ RSpec.describe GemComet::Changelog::Generator do
           ### Breaking Change
           ### Misc
 
-          * Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([#25](https://github.com/ryz310/gem_comet/pull/25))
-          * Enhance the feature of changelog command ([#27](https://github.com/ryz310/gem_comet/pull/27))
-          * Update v0.3.0 ([#30](https://github.com/ryz310/gem_comet/pull/30))
-          * Release v0.3.0 ([#31](https://github.com/ryz310/gem_comet/pull/31))
+          * [#25](https://github.com/ryz310/gem_comet/pull/25) Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([@ryz310](https://github.com/ryz310))
+          * [#27](https://github.com/ryz310/gem_comet/pull/27) Enhance the feature of changelog command ([@ryz310](https://github.com/ryz310))
+          * [#30](https://github.com/ryz310/gem_comet/pull/30) Update v0.3.0 ([@ryz310](https://github.com/ryz310))
+          * [#31](https://github.com/ryz310/gem_comet/pull/31) Release v0.3.0 ([@ryz310](https://github.com/ryz310))
         MARKDOWN
       end
 
@@ -38,10 +38,10 @@ RSpec.describe GemComet::Changelog::Generator do
           ### Breaking Change
           ### Misc
 
-          * Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([#25](https://github.com/ryz310/gem_comet/pull/25))
-          * Enhance the feature of changelog command ([#27](https://github.com/ryz310/gem_comet/pull/27))
-          * Update v0.3.0 ([#30](https://github.com/ryz310/gem_comet/pull/30))
-          * Release v0.3.0 ([#31](https://github.com/ryz310/gem_comet/pull/31))
+          * [#25](https://github.com/ryz310/gem_comet/pull/25) Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([@ryz310](https://github.com/ryz310))
+          * [#27](https://github.com/ryz310/gem_comet/pull/27) Enhance the feature of changelog command ([@ryz310](https://github.com/ryz310))
+          * [#30](https://github.com/ryz310/gem_comet/pull/30) Update v0.3.0 ([@ryz310](https://github.com/ryz310))
+          * [#31](https://github.com/ryz310/gem_comet/pull/31) Release v0.3.0 ([@ryz310](https://github.com/ryz310))
         MARKDOWN
       end
 

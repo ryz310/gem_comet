@@ -17,6 +17,7 @@ module GemComet
       private
 
       MERGE_COMMIT_TITLE = /Merge pull request #(\d+) from (.+)/.freeze
+      AUTHOR_NAME = /<(.+?)@users\.noreply\.github\.com>/.freeze
 
       # Returns changelogs as markdown format from current version to HEAD commit.
       #
@@ -50,12 +51,27 @@ module GemComet
         merge_commits.map do |merge_commit|
           next unless merge_commit.match?(MERGE_COMMIT_TITLE)
 
-          pull_request_number = extract_pull_request_number(merge_commit)
-          pull_request_url = get_pull_request_url(pull_request_number)
-          description = extract_description(merge_commit) || extract_branch_name(merge_commit)
+          number = extract_pull_request_number(merge_commit)
+          title = extract_description(merge_commit) || extract_branch_name(merge_commit)
+          author = extract_author_name(merge_commit)
 
-          "* #{description} ([##{pull_request_number}](#{pull_request_url}))"
+          generate_changelog(number, title, author)
         end.compact
+      end
+
+      # Generates changelog message as markdown list
+      #
+      # @param number [Integer] The pull request number
+      # @param title [String] The pull request title
+      # @param author [String] The author of the PR
+      # @return [String] Changelog message as markdown list
+      def generate_changelog(number, title, author)
+        [
+          '*',
+          "[##{number}](#{get_pull_request_url(number)})",
+          title,
+          "([@#{author}](https://github.com/#{author}))"
+        ].join(' ')
       end
 
       # Extracts PR number from merge commit string.
@@ -90,6 +106,14 @@ module GemComet
       # @return [String] Branch name
       def extract_branch_name(merge_commit)
         MERGE_COMMIT_TITLE.match(merge_commit).captures.last.chomp.strip
+      end
+
+      # Extracts the author of the PR from merge commit string.
+      #
+      # @param merge_commit [String] The target string
+      # @return [String] Author name
+      def extract_author_name(merge_commit)
+        AUTHOR_NAME.match(merge_commit).captures.first
       end
 
       # Parces the merge commit log, which to separate by each commit.
