@@ -1,3 +1,11 @@
+# [Usage]
+#
+# $ gem install gem_comet
+# $ gem_comet init
+# $ gem_comet release {version number, like as "1.2.3"}
+# $ gem_comet changelog
+# $ gem_comet versions
+
 version: 1.1
 
 release:
