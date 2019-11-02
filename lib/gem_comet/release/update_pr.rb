@@ -8,12 +8,13 @@ module GemComet
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
         @version_editor = VersionEditor.new
+        @prev_version = version_editor.current_version
         @changelog_editor = Changelog::Editor.new
       end
 
       private
 
-      attr_reader :version, :pr_comet, :version_editor, :changelog_editor
+      attr_reader :version, :prev_version, :pr_comet, :version_editor, :changelog_editor
 
       def call
         update_changelog
@@ -40,7 +41,16 @@ module GemComet
       end
 
       def create_pull_request
-        pr_comet.create!(title: "Update v#{version}", body: LEGEND)
+        pr_comet.create!(title: "Update v#{version}", body: pull_request_body)
+      end
+
+      def pull_request_body
+        template = File.read(template_file_path)
+        ERB.new(template, nil, '-').result(binding)
+      end
+
+      def template_file_path
+        File.expand_path('../../../template/update_pr.md.erb', __dir__)
       end
     end
   end
