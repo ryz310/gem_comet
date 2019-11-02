@@ -24,29 +24,25 @@ RSpec.describe GemComet::CLI do
 
       before do
         stub_pr_comet!
+        allow(GemComet::VerifyGitCondition).to receive(:call)
         allow(GemComet::Release::UpdatePR).to receive(:call)
         allow(GemComet::Release::ReleasePR).to receive(:call)
         allow(GemComet::OpenGithubPullsPage).to receive(:call)
       end
 
-      it 'creates update PR' do
+      # rubocop:disable RSpec/ExampleLength
+      it 'verifies git condition then creates 2 PRs then open GitHub pull requests page' do
         release!
-        expect(GemComet::Release::UpdatePR)
-          .to have_received(:call)
-          .with(version: version, base_branch: 'master')
+        expect(GemComet::VerifyGitCondition)
+          .to have_received(:call).with(no_args).ordered
+        expect(GemComet::Release::UpdatePR).to have_received(:call)
+          .with(version: version, base_branch: 'master').ordered
+        expect(GemComet::Release::ReleasePR).to have_received(:call)
+          .with(version: version, base_branch: 'master', release_branch: 'release').ordered
+        expect(GemComet::OpenGithubPullsPage)
+          .to have_received(:call).with(no_args).ordered
       end
-
-      it 'creates release PR' do
-        release!
-        expect(GemComet::Release::ReleasePR)
-          .to have_received(:call)
-          .with(version: version, base_branch: 'master', release_branch: 'release')
-      end
-
-      it 'opens the GitHub pulls page' do
-        release!
-        expect(GemComet::OpenGithubPullsPage).to have_received(:call).with(no_args)
-      end
+      # rubocop:enable RSpec/ExampleLength
     end
 
     context 'with invalid version number' do
