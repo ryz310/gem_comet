@@ -1,5 +1,22 @@
 # Change log
 
+## v0.5.0 (Nov 02, 2019)
+
+### Feature
+### Bugfix
+### Breaking Change
+### Misc
+
+* [#46](https://github.com/ryz310/gem_comet/pull/46) Re-generate .rubocop_todo.yml with RuboCop v0.76.0 ([@ryz310](https://github.com/ryz310))
+* [#44](https://github.com/ryz310/gem_comet/pull/44) Configure Renovate ([@ryz310](https://github.com/ryz310))
+* [#48](https://github.com/ryz310/gem_comet/pull/48) Add TODO list for the release flow ([@ryz310](https://github.com/ryz310))
+* [#49](https://github.com/ryz310/gem_comet/pull/49) Add pull request author names to the changelog generator feature ([@ryz310](https://github.com/ryz310))
+* [#47](https://github.com/ryz310/gem_comet/pull/47) Update ruby-orbs orb to v1.4.4 ([@ryz310](https://github.com/ryz310))
+* [#50](https://github.com/ryz310/gem_comet/pull/50) Fixed broken version number parsing including obsolete version numbers ([@ryz310](https://github.com/ryz310))
+* [#51](https://github.com/ryz310/gem_comet/pull/51) Fix author name parsing ([@ryz310](https://github.com/ryz310))
+* [#53](https://github.com/ryz310/gem_comet/pull/53) Use pr comet stubbing ([@ryz310](https://github.com/ryz310))
+* [#54](https://github.com/ryz310/gem_comet/pull/54) Add to todo list to check version numbering ([@ryz310](https://github.com/ryz310))
+
 ## v0.4.0 (Oct 27, 2019)
 
 ### Feature
