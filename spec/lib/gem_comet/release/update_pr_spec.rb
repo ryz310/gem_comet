@@ -8,13 +8,8 @@ RSpec.describe GemComet::Release::UpdatePR do
     allow(GemComet::BundleUpdater).to receive(:call)
   end
 
-  let!(:pr_comet) do
-    instance_double(PrComet, create!: true).tap do |instance|
-      allow(instance).to receive(:commit) { |_message, &block| block&.call }
-      allow(PrComet).to receive(:new).and_return(instance)
-    end
-  end
   let(:version_editor) { instance_double(GemComet::VersionEditor, update!: nil) }
+  let!(:pr_comet) { stub_pr_comet! }
   let(:changelog_editor) { instance_double(GemComet::Changelog::Editor, prepend!: nil) }
 
   describe '.call' do

@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe GemComet::Release::ReleasePR do
-  let!(:pr_comet) do
-    instance_double(PrComet, create!: true).tap do |instance|
-      allow(instance).to receive(:commit) { |_message, &block| block&.call }
-      allow(PrComet).to receive(:new).and_return(instance)
-    end
-  end
+  let!(:pr_comet) { stub_pr_comet! }
 
   describe '.call' do
     subject(:release_pr) do
