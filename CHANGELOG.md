@@ -1,5 +1,14 @@
 # Change log
 
+## v0.5.1 (Nov 03, 2019)
+
+### Feature
+### Bugfix
+### Breaking Change
+### Misc
+
+
+
 ## v0.5.0 (Nov 02, 2019)
 
 ### Feature
