@@ -67,4 +67,12 @@ RSpec.describe GemComet::GitCommand do
 
     it_behaves_like 'to execute git command', 'git checkout master'
   end
+
+  describe '#pull' do
+    subject(:execute) { instance.pull }
+
+    let(:response) { 'Already up to date.' }
+
+    it_behaves_like 'to execute git command', 'git pull'
+  end
 end
