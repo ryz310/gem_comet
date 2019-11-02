@@ -5,46 +5,41 @@ module GemComet
   class VerifyGitCondition < ServiceAbstract
     def initialize
       @base_branch = Config.call.release.base_branch
+      @git_command = GitCommand.new
     end
 
     private
 
-    attr_reader :base_branch
+    attr_reader :base_branch, :git_command
 
     def call
-      raise "There are uncommitted files:\n#{uncommitted_files}" unless uncommitted_files.empty?
-
+      verify_git_status
       checkout_to_base_branch!
       git_pull!
     end
 
-    # Get uncommitted files
+    # Verifies that there are not uncommitted files
     #
-    # @return [String] Uncommitted files
-    def uncommitted_files
-      @uncommitted_files ||= `git status --short`
-    end
+    # @raise [RuntimeError] Exists uncommitted files
+    def verify_git_status
+      uncommitted_files = git_command.uncommitted_files
+      return if uncommitted_files.empty?
 
-    # Get current git branch name
-    #
-    # @return [String] The current branch name
-    def current_branch
-      @current_branch ||= `git rev-parse --abbrev-ref HEAD`.chomp
+      raise "There are uncommitted files:\n#{uncommitted_files.join("\n")}"
     end
 
     # Checkout to the base branch
     def checkout_to_base_branch!
+      current_branch = git_command.current_branch
       return if base_branch == current_branch
 
-      puts "Current branch is expected to #{base_branch}, but '#{current_branch}'."
-      puts "Checkout to #{base_branch}."
-      `git checkout #{base_branch}`
-      @current_branch = base_branch
+      puts "Current branch is expected to '#{base_branch}', but '#{current_branch}'."
+      puts "Checkout to '#{base_branch}'."
+      git_command.checkout(base_branch)
     end
 
-    # Executes `$ git pull`
     def git_pull!
-      `git pull`
+      git_command.pull
     end
   end
 end
