@@ -15,6 +15,7 @@ module GemComet
     attr_reader :version, :config
 
     def call
+      VerifyGitCondition.call
       UpdatePR.call(update_pr_args)
       ReleasePR.call(release_pr_args)
       OpenGithubPullsPage.call
