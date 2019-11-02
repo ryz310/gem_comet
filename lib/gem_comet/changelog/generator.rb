@@ -17,7 +17,6 @@ module GemComet
       private
 
       MERGE_COMMIT_TITLE = /Merge pull request #(\d+) from (.+)/.freeze
-      AUTHOR_NAME = /<(.+?)@users\.noreply\.github\.com>/.freeze
 
       # Returns changelogs as markdown format from current version to HEAD commit.
       #
@@ -113,7 +112,7 @@ module GemComet
       # @param merge_commit [String] The target string
       # @return [String] Author name
       def extract_author_name(merge_commit)
-        AUTHOR_NAME.match(merge_commit).captures.first
+        extract_branch_name(merge_commit).split('/').first
       end
 
       # Parces the merge commit log, which to separate by each commit.
