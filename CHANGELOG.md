@@ -3,9 +3,6 @@
 ## v0.6.0 (Nov 03, 2019)
 
 ### Feature
-### Bugfix
-### Breaking Change
-### Misc
 
 * [#60](https://github.com/ryz310/gem_comet/pull/60) Verify git condition on release ([@ryz310](https://github.com/ryz310))
 
