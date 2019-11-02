@@ -18,7 +18,20 @@ module GemComet
       end
 
       def create_pull_request
-        pr_comet.create!(title: "Release v#{version}", body: LEGEND, validate: false)
+        pr_comet.create!(
+          title: "Release v#{version}",
+          body: pull_request_body,
+          validate: false
+        )
+      end
+
+      def pull_request_body
+        template = File.read(template_file_path)
+        ERB.new(template, nil, '-').result(binding)
+      end
+
+      def template_file_path
+        File.expand_path('../../../template/release_pr.md.erb', __dir__)
       end
     end
   end
