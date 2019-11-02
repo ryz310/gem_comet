@@ -40,7 +40,16 @@ module GemComet
       end
 
       def create_pull_request
-        pr_comet.create!(title: "Update v#{version}", body: LEGEND)
+        pr_comet.create!(title: "Update v#{version}", body: pull_request_body)
+      end
+
+      def pull_request_body
+        template = File.read(template_file_path)
+        ERB.new(template, nil, '-').result
+      end
+
+      def template_file_path
+        File.expand_path('../../../template/update_pr.md.erb', __dir__)
       end
     end
   end
