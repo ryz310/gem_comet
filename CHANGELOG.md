@@ -1,5 +1,16 @@
 # Change log
 
+## v0.6.1 (Nov 22, 2019)
+
+### Feature
+### Bugfix
+### Breaking Change
+### Misc
+
+* [#64](https://github.com/ryz310/gem_comet/pull/64) Bump rubocop-performance from 1.5.0 to 1.5.1 ([@ryz310](https://github.com/ryz310))
+* [#63](https://github.com/ryz310/gem_comet/pull/63) ryz310/dependabot/bundler/rake-13.0.1 ([@ryz310](https://github.com/ryz310))
+* [#65](https://github.com/ryz310/gem_comet/pull/65) Update ruby-orbs orb to v1.4.5 ([@ryz310](https://github.com/ryz310))
+
 ## v0.6.0 (Nov 03, 2019)
 
 ### Feature
