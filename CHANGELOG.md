@@ -2,9 +2,6 @@
 
 ## v0.6.1 (Nov 22, 2019)
 
-### Feature
-### Bugfix
-### Breaking Change
 ### Misc
 
 * [#64](https://github.com/ryz310/gem_comet/pull/64) Bump rubocop-performance from 1.5.0 to 1.5.1 ([@ryz310](https://github.com/ryz310))
