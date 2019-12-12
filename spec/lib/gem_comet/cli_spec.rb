@@ -25,8 +25,8 @@ RSpec.describe GemComet::CLI do
       before do
         stub_pr_comet!
         allow(GemComet::VerifyGitCondition).to receive(:call)
-        allow(GemComet::Release::UpdatePR).to receive(:call)
-        allow(GemComet::Release::ReleasePR).to receive(:call)
+        allow(GemComet::Release::CreateUpdatePR).to receive(:call)
+        allow(GemComet::Release::CreateReleasePR).to receive(:call)
         allow(GemComet::OpenGithubPullsPage).to receive(:call)
       end
 
@@ -35,9 +35,9 @@ RSpec.describe GemComet::CLI do
         release!
         expect(GemComet::VerifyGitCondition)
           .to have_received(:call).with(no_args).ordered
-        expect(GemComet::Release::UpdatePR).to have_received(:call)
+        expect(GemComet::Release::CreateUpdatePR).to have_received(:call)
           .with(version: version, base_branch: 'master').ordered
-        expect(GemComet::Release::ReleasePR).to have_received(:call)
+        expect(GemComet::Release::CreateReleasePR).to have_received(:call)
           .with(version: version, base_branch: 'master', release_branch: 'release').ordered
         expect(GemComet::OpenGithubPullsPage)
           .to have_received(:call).with(no_args).ordered

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe GemComet::Release::ReleasePR do
+RSpec.describe GemComet::Release::CreateReleasePR do
   let!(:pr_comet) { stub_pr_comet! }
 
   describe '.call' do

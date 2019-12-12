@@ -3,7 +3,7 @@
 module GemComet
   class Release
     # Creates a pull request for your gem release
-    class ReleasePR < ServiceAbstract
+    class CreateReleasePR < ServiceAbstract
       private
 
       attr_reader :version, :pr_comet
