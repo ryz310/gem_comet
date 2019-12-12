@@ -3,7 +3,7 @@
 module GemComet
   class Release
     # Creates a pull request for release preparation
-    class UpdatePR < ServiceAbstract
+    class CreateUpdatePR < ServiceAbstract
       def initialize(version:, base_branch:)
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")

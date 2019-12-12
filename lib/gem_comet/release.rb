@@ -16,8 +16,8 @@ module GemComet
 
     def call
       VerifyGitCondition.call
-      UpdatePR.call(update_pr_args)
-      ReleasePR.call(release_pr_args)
+      CreateUpdatePR.call(update_pr_args)
+      CreateReleasePR.call(release_pr_args)
       OpenGithubPullsPage.call
     end
 
