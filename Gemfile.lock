@@ -84,7 +84,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.1)
   gem_comet!
   pry-byebug
   rake (~> 13.0)
