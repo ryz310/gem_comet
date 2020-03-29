@@ -5,8 +5,8 @@ module GemComet
   class ServiceAbstract
     private_class_method :new
 
-    def self.call(*args)
-      new(*args).send(:call)
+    def self.call(**args, &block)
+      new(**args).send(:call, &block)
     end
 
     def initialize(_args)
