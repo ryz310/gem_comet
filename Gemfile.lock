@@ -80,7 +80,7 @@ GEM
     thor (1.0.1)
     type_struct (0.8.0)
     unicode-display_width (1.7.0)
-    yard (0.9.24)
+    yard (0.9.25)
 
 PLATFORMS
   ruby
