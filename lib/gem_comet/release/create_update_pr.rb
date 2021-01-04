@@ -3,7 +3,7 @@
 module GemComet
   class Release
     # Creates a pull request for release preparation
-    class UpdatePR < ServiceAbstract
+    class CreateUpdatePR < ServiceAbstract
       def initialize(version:, base_branch:)
         @version = version
         @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
@@ -46,7 +46,7 @@ module GemComet
 
       def pull_request_body
         template = File.read(template_file_path)
-        ERB.new(template, nil, '-').result(binding)
+        ERB.new(template, trim_mode: '-').result(binding)
       end
 
       def template_file_path

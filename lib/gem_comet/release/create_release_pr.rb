@@ -3,7 +3,7 @@
 module GemComet
   class Release
     # Creates a pull request for your gem release
-    class ReleasePR < ServiceAbstract
+    class CreateReleasePR < ServiceAbstract
       private
 
       attr_reader :version, :pr_comet
@@ -27,7 +27,7 @@ module GemComet
 
       def pull_request_body
         template = File.read(template_file_path)
-        ERB.new(template, nil, '-').result(binding)
+        ERB.new(template, trim_mode: '-').result(binding)
       end
 
       def template_file_path

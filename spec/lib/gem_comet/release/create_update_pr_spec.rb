@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe GemComet::Release::UpdatePR do
+RSpec.describe GemComet::Release::CreateUpdatePR do
   before do
     allow(GemComet::VersionEditor).to receive(:new).and_return(version_editor)
     allow(GemComet::Changelog::Editor).to receive(:new).and_return(changelog_editor)
