@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    gem_comet (0.7.0)
-      pr_comet (~> 0.3.1)
+    gem_comet (0.7.1)
+      pr_comet (~> 0.4.0)
       thor
       type_struct
 
@@ -30,7 +30,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
-    pr_comet (0.3.1)
+    pr_comet (0.4.0)
       octokit
       rainbow
     pry (0.13.1)

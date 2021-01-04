@@ -1,5 +1,11 @@
 # Change log
 
+## v0.7.1 (Jan 04, 2021)
+
+### Bugfix
+
+* [#214](https://github.com/ryz310/gem_comet/pull/214) Fix dependency ([@ryz310](https://github.com/ryz310))
+
 ## v0.7.0 (Jan 04, 2021)
 
 ### Breaking Change
