@@ -46,7 +46,7 @@ module GemComet
 
       def pull_request_body
         template = File.read(template_file_path)
-        ERB.new(template, nil, '-').result(binding)
+        ERB.new(template, trim_mode: '-').result(binding)
       end
 
       def template_file_path
