@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gem_comet (0.7.1)
+    gem_comet (0.7.2)
       pr_comet (~> 0.4.0)
       thor
       type_struct
