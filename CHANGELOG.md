@@ -1,5 +1,34 @@
 # Change log
 
+## v0.7.0 (Jan 04, 2021)
+
+### Breaking Change
+
+* [#178](https://github.com/ryz310/gem_comet/pull/178) End of support for Ruby 2.4 ([@ryz310](https://github.com/ryz310))
+* [#211](https://github.com/ryz310/gem_comet/pull/211) Support ruby 3.0 ([@ryz310](https://github.com/ryz310))
+
+### Rubocop Challenger
+
+* [#129](https://github.com/ryz310/gem_comet/pull/129) Performance/StartWith-20200523233027 ([@ryz310](https://github.com/ryz310))
+* [#206](https://github.com/ryz310/gem_comet/pull/206) Re-generate .rubocop_todo.yml with RuboCop v1.7.0 ([@ryz310](https://github.com/ryz310))
+
+### Dependabot
+
+* [#74](https://github.com/ryz310/gem_comet/pull/74) Bump thor from 1.0.0 to 1.0.1 ([@ryz310](https://github.com/ryz310))
+* [#112](https://github.com/ryz310/gem_comet/pull/112) ryz310/dependabot/bundler/pry-byebug-3.9.0 ([@ryz310](https://github.com/ryz310))
+* [#176](https://github.com/ryz310/gem_comet/pull/176) ryz310/dependabot/bundler/rspec-3.10.0 ([@ryz310](https://github.com/ryz310))
+* [#200](https://github.com/ryz310/gem_comet/pull/200) ryz310/dependabot/bundler/rubocop-1.6.1 ([@ryz310](https://github.com/ryz310))
+* [#203](https://github.com/ryz310/gem_comet/pull/203) ryz310/dependabot/bundler/rubocop-rspec-2.1.0 ([@ryz310](https://github.com/ryz310))
+* [#204](https://github.com/ryz310/gem_comet/pull/204) ryz310/dependabot/bundler/rake-13.0.2 ([@ryz310](https://github.com/ryz310))
+* [#207](https://github.com/ryz310/gem_comet/pull/207) ryz310/dependabot/bundler/yard-0.9.26 ([@ryz310](https://github.com/ryz310))
+* [#210](https://github.com/ryz310/gem_comet/pull/210) ryz310/dependabot/bundler/rubocop-performance-1.9.2 ([@ryz310](https://github.com/ryz310))
+
+### Misc
+
+* [#71](https://github.com/ryz310/gem_comet/pull/71) Rename service classes to add verb to prefix ([@ryz310](https://github.com/ryz310))
+* [#96](https://github.com/ryz310/gem_comet/pull/96) Update ruby-orbs orb to v1.6.0 ([@ryz310](https://github.com/ryz310))
+* [#113](https://github.com/ryz310/gem_comet/pull/113) Edit dependabot configuration ([@ryz310](https://github.com/ryz310))
+
 ## v0.6.1 (Nov 22, 2019)
 
 ### Misc
