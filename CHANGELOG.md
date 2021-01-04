@@ -2,10 +2,7 @@
 
 ## v0.7.2 (Jan 04, 2021)
 
-### Feature
 ### Bugfix
-### Breaking Change
-### Misc
 
 * [#217](https://github.com/ryz310/gem_comet/pull/217) Use `**` to keyword argument for Ruby 3.0 ([@ryz310](https://github.com/ryz310))
 
