@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.7.0'
 
-  spec.add_runtime_dependency 'pr_comet', '~> 0.3.1'
+  spec.add_runtime_dependency 'pr_comet', '~> 0.4.0'
   spec.add_runtime_dependency 'thor'
   spec.add_runtime_dependency 'type_struct'
 
