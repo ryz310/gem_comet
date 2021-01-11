@@ -17,6 +17,7 @@ module GemComet
       private
 
       MERGE_COMMIT_TITLE = /Merge pull request #(\d+) from (.+)/.freeze
+      DEFAULT_CATEGORIES = ['Feature', 'Bugfix', 'Breaking Change', 'Misc'].freeze
 
       # Returns changelogs as markdown format from current version to HEAD commit.
       #
@@ -27,10 +28,7 @@ module GemComet
 
           ## #{title} (#{versioning_date})
 
-          ### Feature
-          ### Bugfix
-          ### Breaking Change
-          ### Misc
+          #{changelog_categories.join("\n")}
 
           #{changelogs.reverse.join("\n")}
         MARKDOWN
@@ -41,6 +39,13 @@ module GemComet
       # @return [String] The versioning date. e.g. "Oct 26, 2019"
       def versioning_date
         VersionHistory.new.versioning_date_of(version).strftime('%b %d, %Y')
+      end
+
+      # Returns array of changelog categories reading from the config file.
+      #
+      # @return [Array<String>] Array of changelog categories as markdown format
+      def changelog_categories
+        (Config.call.changelog&.categories || DEFAULT_CATEGORIES).map { |c| "### #{c}" }
       end
 
       # Returns array of changelogs as markdown format.

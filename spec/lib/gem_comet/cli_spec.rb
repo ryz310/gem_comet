@@ -24,6 +24,7 @@ RSpec.describe GemComet::CLI do
 
       before do
         stub_pr_comet!
+        allow(cli).to receive(:options).and_return(verbose: false)
         allow(GemComet::VerifyGitCondition).to receive(:call)
         allow(GemComet::Release::CreateUpdatePR).to receive(:call)
         allow(GemComet::Release::CreateReleasePR).to receive(:call)
@@ -36,9 +37,11 @@ RSpec.describe GemComet::CLI do
         expect(GemComet::VerifyGitCondition)
           .to have_received(:call).with(no_args).ordered
         expect(GemComet::Release::CreateUpdatePR).to have_received(:call)
-          .with(version: version, base_branch: 'master').ordered
+          .with(version: version, base_branch: 'master', verbose: false)
+          .ordered
         expect(GemComet::Release::CreateReleasePR).to have_received(:call)
-          .with(version: version, base_branch: 'master', release_branch: 'release').ordered
+          .with(version: version, base_branch: 'master', release_branch: 'release', verbose: false)
+          .ordered
         expect(GemComet::OpenGithubPullsPage)
           .to have_received(:call).with(no_args).ordered
       end
@@ -57,12 +60,21 @@ RSpec.describe GemComet::CLI do
   describe '#changelog' do
     before do
       allow(GemComet::Changelog).to receive(:call)
+      allow(cli).to receive(:options).and_return(options)
+    end
+
+    let(:options) do
+      {
+        version: 'HEAD',
+        append: false,
+        prepend: false
+      }
     end
 
     it do
       cli.changelog
       expect(GemComet::Changelog)
-        .to have_received(:call).with(version: nil, append: nil, prepend: nil)
+        .to have_received(:call).with(version: 'HEAD', append: false, prepend: false)
     end
   end
 

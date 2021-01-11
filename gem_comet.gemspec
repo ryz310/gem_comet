@@ -24,11 +24,11 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.7.0'
 
-  spec.add_runtime_dependency 'pr_comet', '~> 0.4.0'
+  spec.add_runtime_dependency 'pr_comet', '~> 0.5.1'
   spec.add_runtime_dependency 'thor'
   spec.add_runtime_dependency 'type_struct'
 
-  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'bundler', '~> 2.2'
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec'
@@ -36,6 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-performance'
   spec.add_development_dependency 'rubocop-rspec'
-  spec.add_development_dependency 'simplecov', '0.17.1'
+  spec.add_development_dependency 'simplecov', '0.21.2'
   spec.add_development_dependency 'yard'
 end
