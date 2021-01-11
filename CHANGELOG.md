@@ -1,5 +1,19 @@
 # Change log
 
+## v0.8.0 (Jan 11, 2021)
+
+### Feature
+
+* [#223](https://github.com/ryz310/gem_comet/pull/223) Add verbose option ([@ryz310](https://github.com/ryz310))
+* [#226](https://github.com/ryz310/gem_comet/pull/226) Add categories option ([@ryz310](https://github.com/ryz310))
+
+### Dependabot
+
+* [#201](https://github.com/ryz310/gem_comet/pull/201) Update bundler requirement from ~> 1.16 to ~> 2.2 ([@ryz310](https://github.com/ryz310))
+* [#221](https://github.com/ryz310/gem_comet/pull/221) ryz310/dependabot/bundler/rubocop-1.8.0 ([@ryz310](https://github.com/ryz310))
+* [#222](https://github.com/ryz310/gem_comet/pull/222) Update simplecov requirement from = 0.17.1 to = 0.21.2 ([@ryz310](https://github.com/ryz310))
+* [#227](https://github.com/ryz310/gem_comet/pull/227) ryz310/dependabot/bundler/rubocop-1.8.1 ([@ryz310](https://github.com/ryz310))
+
 ## v0.7.2 (Jan 04, 2021)
 
 ### Bugfix
