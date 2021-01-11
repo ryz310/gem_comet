@@ -17,10 +17,12 @@ RSpec.describe GemComet::Release do
         .to have_received(:call).ordered
       expect(GemComet::Release::CreateUpdatePR)
         .to have_received(:call)
-        .with(version: '1.2.3', base_branch: 'master').ordered
+        .with(version: '1.2.3', base_branch: 'master', verbose: false)
+        .ordered
       expect(GemComet::Release::CreateReleasePR)
         .to have_received(:call)
-        .with(version: '1.2.3', base_branch: 'master', release_branch: 'release').ordered
+        .with(version: '1.2.3', base_branch: 'master', release_branch: 'release', verbose: false)
+        .ordered
       expect(GemComet::OpenGithubPullsPage)
         .to have_received(:call).ordered
     end

@@ -8,9 +8,9 @@ module GemComet
 
       attr_reader :version, :pr_comet
 
-      def initialize(version:, base_branch:, release_branch:)
+      def initialize(version:, base_branch:, release_branch:, verbose: false)
         @version = version
-        @pr_comet = PrComet.new(base: release_branch, branch: base_branch)
+        @pr_comet = PrComet.new(base: release_branch, branch: base_branch, verbose: verbose)
       end
 
       def call

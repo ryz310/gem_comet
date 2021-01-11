@@ -3,16 +3,17 @@
 module GemComet
   # Creates pull requests for gem release and that preparation
   class Release < ServiceAbstract
-    def initialize(version:)
+    def initialize(version:, verbose: false)
       verify_version_number(version)
 
       @version = version
       @config = Config.call
+      @verbose = verbose
     end
 
     private
 
-    attr_reader :version, :config
+    attr_reader :version, :config, :verbose
 
     def call
       VerifyGitCondition.call
@@ -24,7 +25,8 @@ module GemComet
     def update_pr_args
       {
         version: version,
-        base_branch: config.release.base_branch
+        base_branch: config.release.base_branch,
+        verbose: verbose
       }
     end
 
@@ -32,7 +34,8 @@ module GemComet
       {
         version: version,
         base_branch: config.release.base_branch,
-        release_branch: config.release.release_branch
+        release_branch: config.release.release_branch,
+        verbose: verbose
       }
     end
 
