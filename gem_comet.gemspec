@@ -22,7 +22,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency 'pr_comet', '~> 0.3.1'
+  spec.required_ruby_version = '>= 2.7.0'
+
+  spec.add_runtime_dependency 'pr_comet', '~> 0.5.0'
   spec.add_runtime_dependency 'thor'
   spec.add_runtime_dependency 'type_struct'
 
@@ -34,6 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-performance'
   spec.add_development_dependency 'rubocop-rspec'
-  spec.add_development_dependency 'simplecov', '0.17.1'
+  spec.add_development_dependency 'simplecov', '0.21.2'
   spec.add_development_dependency 'yard'
 end

@@ -20,8 +20,12 @@ module GemComet
     end
 
     desc 'release VERSION', 'Creates update PR and release PR'
+    option :verbose,
+           type: :boolean,
+           default: false,
+           desc: 'Displays executing commands.'
     def release(version)
-      Release.call(version: version)
+      Release.call(version: version, verbose: options[:verbose])
     rescue StandardError => e
       puts e.message
     end

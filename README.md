@@ -26,6 +26,10 @@ release:
   version_file_path: { Path of the version file. e.g. lib/gem_comet/version.rb }
 ```
 
+## Supported versions
+
+* Ruby 2.7, 3.0
+
 ## Usage
 
 ### Display changelogs

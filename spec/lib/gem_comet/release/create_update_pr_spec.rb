@@ -44,7 +44,9 @@ RSpec.describe GemComet::Release::CreateUpdatePR do
     it 'commits and creates a pull request to update gem version' do
       update_pr
       expect(PrComet)
-        .to have_received(:new).with(base: 'master', branch: 'update/v1.2.3').ordered
+        .to have_received(:new)
+        .with(base: 'master', branch: 'update/v1.2.3', verbose: false)
+        .ordered
       expect(pr_comet)
         .to have_received(:commit).with(':comet: Update CHANGELOG.md').ordered
       expect(pr_comet)
