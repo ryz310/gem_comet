@@ -8,14 +8,16 @@ module GemComet
     CONFIG_FILE_PATH = '.gem_comet.yml'
     CURRENT_VERSION = 1.1
 
-    V1_1 = TypeStruct.new(
-      version: 1.0...2.0,
-      release: TypeStruct.new(
+    Release = TypeStruct.new(
         base_branch: String,
         release_branch: String,
         version_file_path: String,
         changelog_file_path: String | nil
       )
+
+    V1_1 = TypeStruct.new(
+      version: 1.0...2.0,
+      release: Release
     )
 
     def initialize; end
