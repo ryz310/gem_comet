@@ -4,9 +4,9 @@ module GemComet
   class Release
     # Creates a pull request for release preparation
     class CreateUpdatePR < ServiceAbstract
-      def initialize(version:, base_branch:)
+      def initialize(version:, base_branch:, verbose: false)
         @version = version
-        @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}")
+        @pr_comet = PrComet.new(base: base_branch, branch: "update/v#{version}", verbose: verbose)
         @version_editor = VersionEditor.new
         @prev_version = version_editor.current_version
         @changelog_editor = Changelog::Editor.new

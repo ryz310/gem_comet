@@ -21,7 +21,7 @@ RSpec.describe GemComet::Release::CreateReleasePR do
     it 'creates a pull request to release the gem' do
       release_pr
       expect(PrComet).to have_received(:new)
-        .with(base: 'release', branch: 'master').ordered
+        .with(base: 'release', branch: 'master', verbose: false).ordered
       expect(pr_comet).to have_received(:create!)
         .with(title: 'Release v1.2.3', body: body, validate: false).ordered
     end
