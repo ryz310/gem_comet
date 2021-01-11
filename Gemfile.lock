@@ -95,7 +95,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.2)
   gem_comet!
   pry-byebug
   rake (~> 13.0)
@@ -108,4 +108,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.17.3
+   2.2.4
