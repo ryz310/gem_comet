@@ -13,6 +13,8 @@ RSpec.describe GemComet::Changelog::Generator do
           ### Feature
           ### Bugfix
           ### Breaking Change
+          ### Rubocop Challenger
+          ### Dependabot
           ### Misc
 
           * [#25](https://github.com/ryz310/gem_comet/pull/25) Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([@ryz310](https://github.com/ryz310))
@@ -36,6 +38,8 @@ RSpec.describe GemComet::Changelog::Generator do
           ### Feature
           ### Bugfix
           ### Breaking Change
+          ### Rubocop Challenger
+          ### Dependabot
           ### Misc
 
           * [#25](https://github.com/ryz310/gem_comet/pull/25) Re-generate .rubocop_todo.yml with RuboCop v0.75.1 ([@ryz310](https://github.com/ryz310))
