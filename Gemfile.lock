@@ -105,7 +105,7 @@ GEM
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.3.0)
     uri (1.1.2)
-    yard (0.9.37)
+    yard (0.9.44)
 
 PLATFORMS
   ruby
