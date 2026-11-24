@@ -5,7 +5,7 @@ module GemComet
   class VersionEditor
     attr_reader :version_file_path
 
-    VERSION_NUMBER_PATTERN = /VERSION\s*=\s*(['"])(.+?)(['"])/.freeze
+    VERSION_NUMBER_PATTERN = /VERSION\s*=\s*(['"])(.+?)(['"])/
 
     def initialize
       @version_file_path = Config.call.release.version_file_path

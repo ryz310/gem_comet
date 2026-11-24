@@ -28,7 +28,7 @@ release:
 
 ## Supported versions
 
-* Ruby 2.7, 3.0
+* Ruby 3.3, 3.4, and 4.0
 
 ## Usage
 
