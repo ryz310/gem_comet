@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/ryz310/gem_comet.svg?style=svg)](https://circleci.com/gh/ryz310/gem_comet) [![Gem Version](https://badge.fury.io/rb/gem_comet.svg)](https://badge.fury.io/rb/gem_comet) [![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
+[![CI](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml/badge.svg)](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml) [![Gem Version](https://badge.fury.io/rb/gem_comet.svg)](https://badge.fury.io/rb/gem_comet) [![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
 
 # GemComet
 
@@ -67,3 +67,11 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the GemComet project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/gem_comet/blob/master/CODE_OF_CONDUCT.md).
+
+## CI and publishing
+
+GitHub Actions runs tests, packaging, RuboCop, and YARD and retains merged coverage as a workflow artifact. During the cutover, hosted coverage is not updated until the separate Qlty migration is applied.
+
+Automatic RubyGems publishing is disabled until RubyGems Trusted Publishing is configured for the `release` environment and `release.yml` workflow. Then enable the repository variable `GHA_RELEASE_ENABLED=true`; publishing only runs on the `release` branch. Before enabling it, update that branch to include this workflow and disable/drain CircleCI publishing so both systems cannot publish the same release.
+
+After the first GitHub Actions run, replace the legacy CircleCI required checks with the corresponding new checks (`Ruby 3.3`, `Ruby 3.4`, `Ruby 4.0`, `quality` and `coverage`). Keep unrelated required checks unchanged. The scheduled RuboCop Challenge is opt-in via `GHA_CHALLENGE_ENABLED=true`; review its bot permissions and GitHub Actions settings before enabling it.
