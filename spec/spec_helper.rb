@@ -3,7 +3,6 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'pry'
 require 'bundler/setup'
 require 'gem_comet'
 require 'pr_comet/rspec'

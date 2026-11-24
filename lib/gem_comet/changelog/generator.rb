@@ -16,7 +16,7 @@ module GemComet
 
       private
 
-      MERGE_COMMIT_TITLE = /Merge pull request #(\d+) from (.+)/.freeze
+      MERGE_COMMIT_TITLE = /Merge pull request #(\d+) from (.+)/
       DEFAULT_CATEGORIES = ['Feature', 'Bugfix', 'Breaking Change', 'Misc'].freeze
 
       # Returns changelogs as markdown format from current version to HEAD commit.
