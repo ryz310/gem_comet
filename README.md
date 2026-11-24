@@ -1,4 +1,4 @@
-[![CI](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml/badge.svg)](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml) [![Gem Version](https://badge.fury.io/rb/gem_comet.svg)](https://badge.fury.io/rb/gem_comet) [![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
+[![CI](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml/badge.svg)](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml) [![Gem Version](https://badge.fury.io/rb/gem_comet.svg)](https://badge.fury.io/rb/gem_comet)
 
 # GemComet
 
@@ -72,7 +72,7 @@ Everyone interacting in the GemComet project’s codebases, issue trackers, chat
 
 GitHub Actions dependencies are tracked in `.github/workflows/actions.lock`. After changing a workflow's `uses:` references, run `gh actions-lock` and commit the generated lockfile with the workflow. Dependabot updates locked Actions dependencies together with their references.
 
-GitHub Actions runs RSpec and builds the gem on the supported Ruby versions. It also runs RuboCop, generates YARD docs, and saves merged coverage as a workflow artifact.
+GitHub Actions runs RSpec and builds the gem on the supported Ruby versions. It also runs RuboCop, generates YARD docs, and saves merged coverage as a workflow artifact. To publish the report and view maintainability in Qlty, import the repository into Qlty Cloud and set `QLTY_COVERAGE_TOKEN` as an Actions secret. Fork PRs and runs without the secret retain the artifact without publishing.
 
 Automatic publishing is opt-in via `GHA_RELEASE_ENABLED=true` and uses RubyGems Trusted Publishing for `release.yml`. Configure the GitHub `release` environment to allow deployments from the `release` branch only, and associate the RubyGems Trusted Publisher with that environment.
 
