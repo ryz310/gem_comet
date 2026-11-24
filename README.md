@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/ryz310/gem_comet.svg?style=svg)](https://circleci.com/gh/ryz310/gem_comet) [![Gem Version](https://badge.fury.io/rb/gem_comet.svg)](https://badge.fury.io/rb/gem_comet) [![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
+[![CI](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml/badge.svg)](https://github.com/ryz310/gem_comet/actions/workflows/ci.yml) [![Gem Version](https://badge.fury.io/rb/gem_comet.svg)](https://badge.fury.io/rb/gem_comet) [![Maintainability](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/maintainability)](https://codeclimate.com/github/ryz310/gem_comet/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/bf80edef201ffe5f3c67/test_coverage)](https://codeclimate.com/github/ryz310/gem_comet/test_coverage)
 
 # GemComet
 
@@ -67,3 +67,13 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the GemComet project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/gem_comet/blob/master/CODE_OF_CONDUCT.md).
+
+## CI and publishing
+
+GitHub Actions dependencies are tracked in `.github/workflows/actions.lock`. After changing a workflow's `uses:` references, run `gh actions-lock` and commit the generated lockfile with the workflow. Dependabot updates locked Actions dependencies together with their references.
+
+GitHub Actions runs RSpec and builds the gem on the supported Ruby versions. It also runs RuboCop, generates YARD docs, and saves merged coverage as a workflow artifact.
+
+Automatic publishing is opt-in via `GHA_RELEASE_ENABLED=true` and uses RubyGems Trusted Publishing for `release.yml`. Configure the GitHub `release` environment to allow deployments from the `release` branch only, and associate the RubyGems Trusted Publisher with that environment.
+
+The daily RuboCop Challenge is opt-in via `GHA_CHALLENGE_ENABLED=true`. Before enabling it, install a GitHub App on this repository with Contents and Pull requests write permissions. Set `CHALLENGE_APP_CLIENT_ID` as a repository variable and `CHALLENGE_APP_PRIVATE_KEY` as an Actions secret. The App token lets the challenge PR trigger CI without relying on approval of a PR created by the built-in token.
