@@ -1,11 +1,5 @@
 # Change log
 
-## Unreleased (planned v0.9.0)
-
-### Breaking Change
-
-* [#445](https://github.com/ryz310/gem_comet/pull/445) End support for Ruby 2.7–3.2; Ruby 3.3 is now required.
-
 ## v0.8.0 (Jan 11, 2021)
 
 ### Feature
