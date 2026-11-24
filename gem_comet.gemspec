@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'type_struct'
 
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rdoc', '>= 7.0', '< 8'
+  spec.add_development_dependency 'rdoc', '>= 7.0', '< 9'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rubocop'
