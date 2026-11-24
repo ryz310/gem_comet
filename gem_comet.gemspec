@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 3.3.0'
 
+  # Octokit 5.1 loads base64 without declaring it; it is not a default gem on Ruby 3.4+.
   spec.add_runtime_dependency 'base64'
   spec.add_runtime_dependency 'pr_comet', '>= 0.5.1', '< 0.8.0'
   spec.add_runtime_dependency 'thor'
